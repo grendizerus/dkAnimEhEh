@@ -1,0 +1,732 @@
+﻿<!DOCTYPE html>
+<html class="js canvas canvastext no-touch hashchange history draganddrop rgba multiplebgs borderimage boxshadow textshadow cssgradients csstransitions sessionstorage" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>dkAnimEhEh - Animation Import & Export Tool help file</title>
+		<link rel="stylesheet" href="./html_sources/dreamcraftdocs.css">
+	</head>
+	<body>
+		<div id="main" class="dcdc-helpdoc-page">
+			<div id="content">
+				<div id="helpdoc-head">
+					<img id="helpdoc-head-icon" src="./html_sources/dkAnimErwin.png" alt="dkAnimErwin - Animation Import &amp; Export Tool">
+					<div id="helpdoc-head-description">
+						<h1 id="helpdoc-product-title">dkAnimEhEh - Animation Import &amp; Export Tool</h1>
+						<div class="clear"></div>
+						<hr>
+						<div class="seller">David Saber www.dreamcraftdigital.com</div>
+						<div class="description">This is a robust tool for exporting and importing animation. A successor to Daniel Kramer's DkAnim and to Dan Erwin's dkAnimErwin scripts.</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+				<div id="helpdoc-tag">
+						<a href="#description" class="helpdoc-breadcrumb">Description</a> 
+						<a href="#inunininfo" class="helpdoc-breadcrumb">Installation/Uninstallation</a>
+						<a href="#generalinfo" class="helpdoc-breadcrumb">General Usage Instructions</a>
+						<a href="#commandinfo" class="helpdoc-breadcrumb">Commands</a>
+						<a href="#screensinfo" class="helpdoc-breadcrumb">Screenshots</a>
+						<a href="#addinfo" class="helpdoc-breadcrumb">Additional Information</a>
+						<a href="#todo" class="helpdoc-breadcrumb">Todo</a>
+						<a href="#contactinfo" class="helpdoc-breadcrumb">Contact</a>
+						<a href="#versionhistoryinfo" class="helpdoc-breadcrumb">Version History</a>  
+					<div class="clear"></div>
+				</div>
+				<br />
+				<div class="helpdoc-element description">
+					<div class="clear"></div>
+					<h1 id="description" class="descriptiontit">Description</h1>
+					<div class="helpdoc-text"> 
+						<div class="description">
+							<br />
+							<p>This tool is intended to save animation data to a *.dkanim file to then be able to import said animation to same, or almost the same rig, in another or same Autodesk Maya scene file.
+							It was first developped by Daniel Kramer, then by Dan Erwin and then by myself : David Saber.
+							Thanks to Daniel Kramer for creating dkAnim tool 15 years ago! It is an awesome tool for exporting and importing animation that has worked in all scenarios I have found myself in.</p>
+						</div>
+					</div>
+					<br /><br />
+				</div>
+				<div class="helpdoc-element ">
+					<div class="clear"></div>
+					<h1 id="inunininfo" class="descriptiontit">Installation / Uninstallation</h1>
+					<div class="helpdoc-text">
+						<p>
+							<br />
+							<h2>V2 by David:</h2>
+							1) Unpack the folder "dkAnimEheh" and copy it inside the user folder Documents\maya\scripts<br />
+							2) Open DkAnim_Launcher.py with a text editor, and copy all text inside<br />
+							3) In Maya, in the animation shelf, open the shelf editor<br />
+							4) In the "shelf content" column, use the "new item" button to add a new button, then choose its position in the shelf using the "move up" and "move down" buttons.<br />
+							5) With the "user script" selected, go to the command tab, first choose "Python" radio button. Then paste the code you copied from DkAnim_Launcher.py.<br />
+							6) Back to the "shelves" tab, you can personalise the button by choosing the dkAnimEhEh.png as the icon name, setting up the tooltip and the icon label, etc.<br />
+							7) Close the shelf editor<br />
+							8) Click the button to start the script.<br />
+							<br />
+							<h2>V1 by Dan:</h2>
+							The installer that ran when you downloaded this plug-in from Autodesk App Store has already installed the plug-in, displayed under custom shelf of Maya.<br />
+							The files are installed in c:\programdata\Autodesk\ApplicationPlugins. You need to edit the XML file packageContents.xml in order to allow the script to be compatible with the latest Maya versions. Replace the value after "SeriesMax".<br />
+							You may need to restart the Autodesk product to activate the plug-in.<br />
+							To uninstall this plug-in, click Control Panel &gt; Programs &gt; Programs and Features (Windows 7/8/8.1/10) or Add/Remove Programs (Windows XP), just as you would uninstall any other application from your system.<br />
+							<br />
+							<h2>V0.x by Daniel:</h2>
+							Open the script in Maya's script editor and add the command "dkAnim" at the end of all code lines.<br />
+						</p>
+					</div>
+				<br /><br />
+				</div>
+				<div class="helpdoc-element ">
+					<div class="clear"></div>
+					<h1 id="generalinfo" class="descriptiontit">General Usage Instructions</h1>
+					<div class="helpdoc-text">
+						<br />
+						<h2>Introduction by David Saber</h2>
+						dkAnim.mel is for Importing or Exporting animation channels in Maya.
+						With this tool, you can export animation curves from different objects (from example in a rig), from a hierarchy of objects, or from a character set.
+						Usually in Maya, export tools do not work with character sets, but this one does.<br />
+						It is intended to save animation data to a *.dkanim file.
+						Then you'll be able to import the saved animation to the same rig (or other kinds of objects), or a rig that's slightly different.
+						dkAnim relies on node names to map channels to objects, and in many cases, it's more reliable than Maya's native export & import tools.
+						You can import the animation file in the same Autodesk Maya scene file, or to another scene file.<br />
+						For example, this can be very useful in the following situation : you animate a rig, then you update the rig in a different scene to improve it. Then you want to import the animation from the old rig to the new rig.
+						You can use dkAnimEehe to export the animation from the old rig, then you import the new rigged character, then you import the animation on the new rig. Then you delete the old rig.
+						If the object have slightly different names (such as different prefix), it wil still work.
+						If the new rig has missing or new control object when compared to the old rig, the export-import will happen on objects that are in common.<br />
+						<br />
+						<h2>Quick Start</h2>
+						To start the process, select the object, series of objects, hierarchy, or character set. Then start the script. In the upper part of the window, create a file for the exported animations.<br />
+						Open the other scene or stay in the same scene. No need to select the objects you want to import the animation to. Start the script again. 
+						In the bottom part of the window, choose the options then import.<br />
+						<br />
+						<h2>Objects selection</h2>
+						<strong>Before exporting:</strong>
+						these are the objects you can select:<br />
+						* A single object.<br />
+						* A selection of multiple object, such as a rig.<br />
+						* A character set.<br />
+						* If the object you are selecting have channels inside a character set, and if you export to a *.dkanim file, this file will be empty.
+						To solve this, you need to: either select the character set instead, either delete the character set.<br />
+						<strong>Before importing:</strong> no need to select objects.
+						<br />
+						<h2>Write Options</h2>
+						<strong>* File path</strong>: Type in a path and name of a .dkanim file in the text field.  You can use the
+						browse button but it has a limitation.. you can't selected a dir name with the
+						Maya file requester unfortunately.  You could select some other file in the dir
+						of your choice and then change the name by hand in the text field.<br />
+						<strong>* Save Hierarchy</strong>:
+						When checked dkAnim will save channels for the selected nodes
+						and all nodes below them. If unchecked then only selected node channels will be
+						saved.<br />
+						<strong>* Write Anim</strong>:
+						Write anim to file specified.  This will save all the keyable 
+						attribues (keyed or not) to a file. For attribues with keyframes all the 
+						keys are saved for objects scoped.. not just keys in your frame range.<br />
+						<br />
+						<h2>Read Options</h2>
+						<strong>* Warning</strong>:
+						dkAnim only inserts new keyframes.. so if you want to replace a curve
+						completely you will first have to delete all the keyframes in your object 
+						before reading animation onto it.  This is a simple step using the 
+						Edit->Keys->Delete Keys option in Maya.<br />
+						<strong>* File path</strong>: Type in a path and name of a .dkanim file in the text field, or use browse 
+						button to search for one.<br />
+						<strong>* Use Search and Replace</strong>:
+						When checked the 2 fields below it are active.  This is used to tweak 
+						channel names in a saved .dkAnim file.  For example if you saved animation 
+						on an object named "A_Hip" and you want to read that onto an object named 
+						"B_Hip" you could type "A_" in the "Search For:" field and "B_" in the
+						"Replace With:" field.<br />
+						<strong>* Add Prefix</strong>:
+						This will add whatever you type to the beginning of all node names in 
+						the saved .dkAnim file.  If you wrote out animation on an object named "Hip" and
+						you are reading that onto an object named "A_Hip" .. just type A_ in the 
+						"Add Prefix:" field.<br />
+						<strong>* Add To Top Nodes Only</strong> (prefix option):
+						When checked the above prefix will only be added to nodes that are at 
+						the root of a hierarchy (top most parent).<br />
+						<strong>* Load Explicit Node Paths</strong>:
+						When a .dkAnim file is saved, each node name is long listed. That means
+						that the node name contains the full path to that object in its hierarchy.  
+						This is done because in Maya, it's possible to have 2 nodes with the same name 
+						as long as they are parented under different objects. So with this checked,
+						dkAnim will look for an object with not only the same name, but parented under
+						the same nodes. If you have re-parented your object or changed some of the 
+						names in the hierarchy to that object, then you'll need to uncheck this option. 
+						If you are sure that you don't have 2 node names that are identical in your file
+						then it's perfectly safe to uncheck this option.<br />
+						<strong>* Load Un-Keyed Attributes</strong>:
+						Many times when animating you might set a value of an attribute without
+						actually keying it..  This happens all the time in fact.  dkAnim actually saves
+						all of these un-keyed values for your nodes in the .dkAnim file.. if this is 
+						checked then those values are transferred to the new file.<br />
+						<strong>* Limit Channels to Scope</strong>:
+						This control goes along with the "Define Channel Scope" button.  Point
+						the readOptions line to a valid .dkanim file and hit the "Define Channel Scope"
+						button. This will list all channels that exist in the .dkanim file after being
+						filtered though the various readOptions. If you don't have 
+						"Load Un-keyed Attributes" checked then only keyed anim curves will be loaded 
+						into the channel scope box. To use the feature make sure to highlight some 
+						channels and click down the "Limit Channels to Scope" checkbox to activate the
+						feature.<br />
+						<br />
+						<h2>Read options : Channel scope window</h2>
+						<strong>*  Refresh list</strong>:
+						If you update any of the search and replace fields or any other readOption
+						control you will need to hit "Refresh" in the channel scope window to see the
+						update. The is an information message that tries to tell you when the channel box is out of
+						sinc after you change options.  The refresh also tries to keep the same selection you had 
+						prior to a refresh.. this is handy for clicking off full paths.. selecting the nodes.. then 
+						clicking full paths back on and retaining the selection.<br />
+						<strong>* Add and Remove Channel Scope</strong>:
+						These are to help you define a channel scope with wildCards.<br />
+					</div>
+				<br /><br />
+				</div>
+				<div class="helpdoc-command helpdoc-element ">
+					<div class="clear"></div>
+					<h1 id="commandinfo" class="descriptiontit">Commands</h1>
+					<div>
+						<br />
+						<table  class="helpdoc-table" id="helpdoc-table-command">
+							<colgroup>
+								<col style="width:15%">
+								<col style="width:15%">
+								<col style="width:70%">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>Ribbon/Toolbar Icon</th>
+									<th>Command</th>
+									<th>Command Description</th>
+								</tr>
+								<tr>
+									<td>
+										<div>
+											<img src="./html_sources/original_4a88cf57-be8d-4d32-a545-428cf804c9ea_.png">
+										</div>
+									</td>
+									<td>
+										<p>
+											dkAnimErwin;
+										</p>
+									</td>
+									<td>
+										<p>
+											To open the window for the tool, V1 only.<br />
+											Available on <img style="height:40px" src="./html_sources/win64.png" /> Windows <img style="height:40px" src="./html_sources/macos64.png" /> Mac OSX.
+										</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				<br /><br />
+				</div>
+				<div id="helpdoc-element-screenshot" class="helpdoc-element">
+					<div class="clear"></div>
+					<h1 id="screensinfo" class="descriptiontit">Screenshots</h1>
+					<br />
+					<div style="width:100%">
+						<div class="helpdoc-screenshot">
+							<a rel="gallery" href="./html_sources/original_98585b04-0b7d-4fb9-8af1-2b727f04903d_.png" title="dkAnim tool Main Window" data-mime="Image">
+								<div class="helpdoc-img-container">
+									<span class="helper"></span>
+									<img class="helpdoc-screenshot-img" src="./html_sources/original_98585b04-0b7d-4fb9-8af1-2b727f04903d_.png">
+									<span class="helper"></span>
+								</div>
+							</a>
+						</div>
+						<div class="helpdoc-screenshot">
+							<a rel="gallery" href="./html_sources/original_affbc724-f507-408a-8015-b2b0b8c85d89_.png" title="Progress bar when exporting/importing animation that you can escape and cancel out of." data-mime="Image">
+								<div class="helpdoc-img-container">
+									<span class="helper"></span>
+									<img class="helpdoc-screenshot-img" src="./html_sources/original_affbc724-f507-408a-8015-b2b0b8c85d89_.png">
+									<span class="helper"></span>
+								</div>
+							</a>
+						</div>
+						<div class="helpdoc-screenshot">
+							<a rel="gallery" href="./html_sources/original_156955e3-98a5-4ade-8082-b2f3ef0e1743_.png" title="The elapse time is printed when import/export is finished." data-mime="Image">
+								<div class="helpdoc-img-container">
+									<span class="helper"></span>
+									<img class="helpdoc-screenshot-img" src="./html_sources/original_156955e3-98a5-4ade-8082-b2f3ef0e1743_.png">
+									<span class="helper"></span>
+								</div>
+							</a>
+						</div>
+						<div class="helpdoc-screenshot">
+							<a rel="gallery" href="./html_sources/original_efdc4461-4671-4411-8ea2-135fad266b1b_.png" title="A prompt appears when importing animation to objects that do NOT exist in the current scene." data-mime="Image">
+								<div class="helpdoc-img-container">
+									<span class="helper"></span>
+									<img class="helpdoc-screenshot-img" src="./html_sources/original_efdc4461-4671-4411-8ea2-135fad266b1b_.png">
+									<span class="helper"></span>
+								</div>
+							</a>                       
+						</div>
+						<div class="clear"></div>
+					</div>
+				<br /><br />
+				</div>
+				<div class="helpdoc-element ">
+					<div class="clear"></div>
+					<h1 id="addinfo" class="descriptiontit">Additional Information</h1>
+					<br />
+					<div class="helpdoc-text">
+						<p><h2>Development by Daniel Kramer, Version 0.10 to 0.97 : <a href="./html_sources/dkAnim-v0.97.zip">DOWNLOAD</a></h2>
+						Daniel is the one who created the script and developped it for a long time, to check all his updates, read the change log in the version history section below.<br />
+						<strong>More info written by Daniel Kramer</strong> : 
+						I wrote dkAnim out of pure frustration with Maya's Animation Import/Export 
+						plugin.  Specifically I was transferring animation from a stripped down Fast
+						Anim file to my full blown Hi-Rez Render file and channels were getting assigned
+						to the wrong objects in many cases.  Maya's plugin seems to save channels based 
+						on hierarchy of your nodes, not necessarily node names.  This can be nice but if
+						your hierarchy changes slightly you may get weird results.. channels getting
+						assigned to the wrong nodes..etc.  I have also run into files that simply would
+						not accept the .anim file at all for no reason that I could fathom.<br />
+						dkAnim relies on node names to map channels to objects.  This way you 
+						can be sure that if you save a channel attached to Hip.tx that it will get to
+						Hip.tx in the destination file.  There are a few options to tweak this which I
+						will describe below in the ReadOptions Section.<br />
+						The other nice feature of dkAnim is that is saves all keyable 
+						attributes for selected nodes.. not just keyed ones.  So if an animator has 
+						changed a value of an animation control w/out keying it.. that will get saved 
+						in the .dkanim file and can optionally be transferred into a new file if you
+						wish.<br />
+						dkAnim saves all features of a keyframe and curve to the file.. so 
+						tangency, weight, pre-infinity, post-infinity, breakdown state.. etc.. it's all
+						preserved unlike Maya's plugin which can corrupt or loose your data.<br />
+						dkAnim has been tested on a Feature Film production for tranfering 
+						animation between character files for a farily complex character.  It should be
+						fairly solid at this point but bugs may show up on different setups.. just 
+						mail me and I will try and squash them.<br />
+						On the bad side.. dkAnim can be slow.  It's much slower then Maya's 
+						plugin (That's just the nature of a Mel script vs. a plugin).  Also reading in 
+						animation can consume memory which doesn't seem to free.. I'm not sure 
+						why this is but with very large files this might be an issue.  For me having 
+						consistant animation transfer is worth these tradeoffs though.<br />
+						<br />
+						<p><h2>Development by Dan Erwin, Version 0.98 to 1.00 : <a href="./html_sources/dkAnimErwin.zip">DOWNLOAD</a></h2>
+						There were a few simple features I found I really wanted/needed in the tool, so back in 2011, I dove into the code and added them! Since then, I have been using my version of the tool.
+						Now I want to share my additions with others! Hope you like it!<br />
+						I am only able to test the script in Maya on Windows: 7 and 10. But the script should work on any and all versions of Maya for all operating systems.
+						I have been using the script for about 10 years now, including early versions of Maya.<br />
+						Find more details on the tool's features here:&nbsp;<a href="https://erwintools.wordpress.com/freetools/dkanimerwin/">https://erwintools.wordpress.com/freetools/dkanimerwin/</a><br />
+						Here are some bullet point addition/changes I made to the original script :
+							<strong>* Loading Bar!!</strong> Added loading/progress bar when importing and+ exporting animation dkanim files!<br />
+							This way you get an idea that it is doing something and, you can get an idea of how much longer it could possibly take before it’s finished.<br />
+							<strong>* ESCAPE!!</strong> You can escape out of the import or export process when the loading bar is present.<br />
+							<strong>* Elapse Time</strong> Prints for elapse time taken to import and export a file, as well as the time the process started and ended.<br />
+							<strong>* Scene Unit</strong> Added support for writing current scene unit preference setting data to file upon export
+							and temporarily set scene unit preference setting upon import of animation (and restoring original scene unit setting after import is complete).<br />
+							<strong>* *.dkanim File type</strong> Using *.dkanim as a file filter type for the file browser when importing and exporting animation files.<br />
+							<strong>* File Browser Start Directory</strong> When importing and exporting; Added start directory to support current file path.<br />
+							<strong>* Auto File Type Extension</strong> When defining export file: The *.dkanim file type extension is not needed to be given, it is auto generated for you.<br />
+							<strong>* Prevent Bad Imports</strong> On import: Prompt user of first object that does NOT exist in scene. Ask to continue or cancel import job.
+							In an attempt to make sure objects trying to import onto exist and to prompt user of issue before trying to import to nothing.<br />
+							<strong>* Import with warnings</strong> During import: Added warnings for when attributes are skipped when they do not exist to allow import to finish on all other valid/existing attributes.<br />
+						<br />
+						<p><h2>Development by David Saber, Version 2.00 and later : <a href="https://www.dreamcraftdigital.com">DOWNLOAD</a></h2>
+						This tool has not been updated since a long time. Now, there are 3 main things I want to do with the script development:<br />
+						- Make it easier to edit the script by getting it off the installation package. For now, the "dkAnimErwin" Mel script is contained and compiled inside the “install.exe”, so it’s not easy to update it.
+						Of course, when the tool is installed, one can go to c:\programdata\Autodesk\ApplicationPlugins to find it, but as soon as it is edited, it is not the same script as inside the install package anymore.
+						So as the script is updated, the Autodesk app store anymore becomes irrelevant. This has been done in January 2024.<br />
+						- Update the script from time to time to correct bugs and add some modest updates. It’s what I did with “RigBox reborn curve tool” script.<br />
+						- Convert the script from MEL to Python 3. I know a bit of Python, but I don’t want to learn Mel as it seems like an old language now, while Python looks like the new universal scripting standard.<br />
+						Update February 2024: this conversion is now DONE! It has been complicated and time consuming because I'm not a Python expert. At first, I tried to translate from Mel to Python using ChatGPT but the resulting code was FULL of errors.
+						When running the script in Maya, it was going berserk, stopping at EACH line with an error message. So I had to learn and understand each line and each Python equivalent to Maya's MEL.
+						In its current shape (v2.05), the Python script does the same job as its MEL counterpart, but the code inside is still a mess, lots of lines and functions need to be re-written.
+						I hope I can manage these updates in the next days.<br />
+						- Make the script available on Github so other people can update the code. With the downfall of Highend3D, which is still offline in february 2024, I need to share the script somewhere else.<br />
+					</div>
+				<br /><br />
+				</div>
+				<div class="helpdoc-element helpdoc-element-hidden">
+					<div class="clear"></div>
+					<h1 id="knownissueinfo" class="descriptiontit">Known Issues</h1>
+					<div class="helpdoc-text"></div>
+				<br /><br />
+				</div>
+				<div class="helpdoc-element ">
+					<div class="clear"></div>
+					<h1 id="todo" class="descriptiontit">To do</h1>
+					<br />
+					<div>
+						<div>
+							<h2 id="authorinfo">David Saber's to do list:</h2>
+							<div class="">
+								* If the object you are selecting have channels inside a character set, and if you export to a *.dkanim file, this file will be empty. To solve this, you need to: either select the character set instead, either delete the character set. But it would be better to warn the user and possibly to prevent the export in that case.<br />
+								* Even if the Time Slider or the Range Slider zoom is limited (compared to the full scope of the animation), dkAnim read process will register all exisitng keys, so Daniel Kramer todo number 2 is important.<br />
+								* When script start, fill the write text input with the scene name and the selected object name.
+								If several objects are selected, or if a hierarchy node is selected, fill with the character set name or the name of the highest node in the hierarchy.
+								If it's a multiple selection inside a hierarchy : put the highest node in the hierarchy.
+								If it's a multiple selection that's not in a hierarchy : put "multiple selection".<br />
+								* check comments in code and convert them into todo list or change log.<br />
+								* Clean and rewrite all function. Done in 2024-02 : none.<br />
+								* in dk_filter_nodes function , search and replace, make search case insensitive<br />
+								* when writing dkanim files, some line items are not in the proper format, for example, it writes "True" instead of "1". other example : if line[11:12] == "T":<br />
+								* add prefix should have its check box<br />
+								* Change UI design and get everything into tabs : tab1 : write options , tab 2 : read option, tab 3: channels selection, which would not be a floating window anymore. The dk erwin progress bar should be part of the main window too, sitting under the tabs.<br />
+								* Create a global variable for the list of all source channels and another for all selected channels.<br />
+								* function dre_dkAnimCheckPath should be more used and called from more functions<br />
+								* At end of read or write: always print start time, end time and elasped time, then print "dkAnim finished" or something like that<br />
+								* cmds.evalDeferred(weighted): are these necessary? Why?<br />
+							</div>
+							<br />
+							<h2 id="authorinfo">Daniel Kramer's to do list at the time of v0.97:</h2>
+							<div class="">
+								1) replace, insert, offset options.<br />
+								2) add a frame range on the read side.<br />
+								3) build a UI to limit which channels are read into a file.  This way if you wrote out animation for an entire character you could extract just a few or a single channel from that file.<br />
+								4) probably going to re-structure it slightly so that you don't have to use the UI for dkAnim at all.. you could just call the read and write procedures directly.
+								This would be cool for incorperating dkAnim import/export into other scripts.<br />
+							</div>
+						</div>
+					</div>
+				<br /><br />
+				</div>
+				<div class="helpdoc-element ">
+					<div class="clear"></div>
+					<h1 id="contactinfo" class="descriptiontit">Contact</h1>
+					<br />
+					<div>
+						<div>
+							<h1 id="authorinfo">Current main developper, Support Contact</h1>
+							<div class="">David Saber: <a href="mailto:davids@davidsaber.com">davids@davidsaber.com</a></div>
+							<div class="">Company Name: DreamCraftDigital</div>
+							<div class="">Company URL: <a href="http://www.DreamCraftDigital.com/" target="_blank">http://www.DreamCraftDigital.com</a></div>
+						</div>
+						<div class="helpdoc-block ">
+							<div class="clear"></div>
+							<h1 id="authorinfo">Previous developpers</h1>
+							<div class="">They're not active anymore on this script but here are their contacts just in case :</div>
+							<div class="helpdoc-text">Erwin Tools: <a href="mailto:help@erwintools.com">help@erwintools.com</a></div>
+							<div class="helpdoc-text">Daniel Kramer: <a href="mailto:danielkramer@gmail.com">danielkramer@gmail.com</a> or daniel@visionart.com</div>
+						</div>
+					</div>
+				<br /><br />
+				</div>
+				<div class="helpdoc-version helpdoc-element">
+					<div class="clear"></div>
+					<h1 id="versionhistoryinfo" class="descriptiontit">Version History</h1>
+					<br />
+					<div>
+						<table class="helpdoc-table" id="helpdoc-table-version">
+							<colgroup>
+								<col style="width:25px">
+								<col style="width:95px">
+								<col style="width:110px">
+								<col style="width:620px">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>Version Number</th>
+									<th>Date</th>
+									<th>Developper</th>
+									<th>Version Description</th>
+								</tr>
+								<tr>
+									<td>
+										<p>
+											0.1
+										</p>
+									</td>
+									<td>
+										<p>
+											1999
+										</p>
+									</td>
+									<td>
+										<p>Daniel Kramer</p>
+									</td>
+									<td>
+										Initial release<br />
+										* dkAnim.mel, Written by Daniel Kramer, danielkramer@gmail.com<br />
+										* Copyright (C) 1999-2007 Daniel Kramer, Los Angeles, Ca. All Rights Reserved.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>
+											0.2
+										</p>
+									</td>
+									<td>
+										<p>
+											1999
+										</p>
+									</td>
+									<td>
+										<p>
+											Daniel Kramer
+										</p>
+									</td>
+									<td>
+										fixed bugs with breakdown keys
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>0.3</p>
+									</td>
+									<td>
+										<p>1999</p>
+									</td>
+									<td>
+										<p>Daniel Kramer</p>
+									</td>
+									<td>
+										Added prompt for overwriting files
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>0.4</p>
+									</td>
+									<td>
+										<p>1999</p>
+									</td>
+									<td>
+										<p>Daniel Kramer</p>
+									</td>
+									<td>
+										Found a bug in Maya that was causing some of the tangents to read in wrong, simply excecuting that tangent command twice seems to do the trick.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>0.5</p>
+									</td>
+									<td>
+										<p>1999</p>
+									</td>
+									<td>
+										<p>Daniel Kramer</p>
+									</td>
+									<td>
+										dkAnim no longer stores setDriven key relationships, it wasn't ment to catch them and was basically empty useless info in the file.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>0.6</p>
+									</td>
+									<td>
+										<p>1999</p>
+									</td>
+									<td>
+										<p>Daniel Kramer</p>
+									</td>
+									<td>
+										* Now dkAnim saves unkeyed attributes for the nodes.  You can choose to read them or not by checking "Load Un-Keyed Attributes".<br />
+										* Fixed bug where node names with a "." in them weren't handled correctly.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>0.7</p>
+									</td>
+									<td>
+										<p>1999</p>
+									</td>
+									<td>
+										<p>Daniel Kramer</p>
+									</td>
+									<td>
+										* Re-designed UI to make it a bit clearer.<br />
+										* Removed "Save Explicit Node Paths" from writer, this is now always done.<br />
+										* Added "Load Explicit Node Paths" to reader, this way the full path is always
+										saved in the file and you can choose to use them or not at read time.<br />
+										* Fixed bug that froze Maya if you selected Search and Replace but the search field was blank.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>0.8</p>
+									</td>
+									<td>
+										<p>2000-07-09</p>
+									</td>
+									<td>
+										<p>Daniel Kramer</p>
+									</td>
+									<td>
+										* Streamlined script procedures a bit to greatly increase speed of both read and write procs. Increases in speed are anywhere from 2 to 7 times faster for read and write operations!<br />
+										* Fixed a bug which incorrectly assigned tangents as "fixed" when they were some other type (like "spline").
+										The curves ended up looking the same though so it was hard to spot this... hopfully it didn't cause a loss or curruption of data. This was a bug in the write proc.<br />
+										* Fixed a bug where breakdown keys weren't always assigned correctly, again this didn't really affect the values of the anim curves at all,
+										so this shouldn't have caused too much headache. This was a bug in the read proc.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>0.9</p>
+									</td>
+									<td>
+										<p>2000-07-10</p>
+									</td>
+									<td>
+										<p>Daniel Kramer</p>
+									</td>
+									<td>
+										Added "Channel Scope" to read options. This allows you to selectivly choose channels to import from a .dkanim file.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>0.95</p>
+									</td>
+									<td>
+										<p>2000-07-11</p>
+									</td>
+									<td>
+										<p>Daniel Kramer</p>
+									</td>
+									<td>
+										* New channel scope speed improvments on very large .dkanim files. By hiding and shrinking The listbox large files load in a ton faster (from 35sec to 7sec in my one test case).<br />
+										* Addition of NT only dialog box for browse button.  Thanks to Cid Newman for adding this Feature for me since I don't have access to NT Maya. Apparently this is a better File browser then the one I was using, but it's only available for NT.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>0.96</p>
+									</td>
+									<td>
+										<p>2000-07-21</p>
+									</td>
+									<td>
+										<p>Daniel Kramer</p>
+									</td>
+									<td>
+										* Apparently attributeQuery Mel command doesn't work as expected on character sets, as a result, dkAnim was failing to read in animation onto character sets.
+										This version checks for the attribute using 'ls' instead and fixes the problem.<br />
+										* dkAnim also wrote out channels as "static" when they were being controled by something other then a channel (like a point constraint),
+										now it skips over those attributes that are controled by other nodes.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>0.97</p>
+									</td>
+									<td>
+										<p>2000-12-21</p>
+									</td>
+									<td>
+										<p>Daniel Kramer</p>
+									</td>
+									<td>
+										Fixed a bug with Channel Scope UI that could cause an infinite loop which hangs Maya.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>0.98</p>
+									</td>
+									<td>
+										<p>2011-07-29</p>
+									</td>
+									<td>
+										<p>Dan Erwin</p>
+									</td>
+									<td>
+										Initial release of modified script with features:<br />
+										* Progress bar<br />
+										* Check and prompt if objects exist<br />
+										* Escape out of process<br />
+										* Print elapse time taken to do import/export<br />
+										* conserve scene unit<br />
+										* Smarter more convenient starting directory for file browser
+										when defining file path<br />
+										* Added warning of attributes that were skipped in the process.<br />
+										* Updated Channel Scope Window Layout Code<br />
+										* dkAnimErwin.mel v .98, Edited by Dan Erwin, danimations@gmail
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>1.00</p>
+									</td>
+									<td>
+										<p>2019-07-30</p>
+									</td>
+									<td>
+										<p>Dan Erwin</p>
+									</td>
+									<td>
+										* Final release of Dan Erwin's script as seen on the <a href="https://apps.autodesk.com/MAYA/en/Detail/Index?id=2559252455666791152">Autodesk app store</a>.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>2.00</p>
+									</td>
+									<td>
+										<p>2024-01-10</p>
+									</td>
+									<td>
+										<p>David Saber</p>
+									</td>
+									<td>
+										* Started to edit Dan Erwin's script.<br />
+										* Make it easier to edit the script by getting it off the installation package. Now the "dkAnimEheh" folder is supposed to be stored inside the "*\Documents\Maya\scripts" folder.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>2.03</p>
+									</td>
+									<td>
+										<p>2024-01-16</p>
+									</td>
+									<td>
+										<p>David Saber</p>
+									</td>
+									<td>
+										* Reorganised the "dkAnimEheh" folder and its subfolders.<br />
+										* Renamed lots of files inside the "dkAnimEheh" folder.<br />
+										* Huge update inside the help file : dkAnimEhEh_Manual.html. New organization and lots of text added.<br />
+										* Edited dkAnimEhEh.mel to cut and paste text from the script's code to the HTML help file dkAnimEhEh_Manual.html. Credits, version history, and help texts, have been moved to the HTML help file.<br />
+										* Added old versions of dkAnim from Daniel and Dan. They are zipped inside the html_sources folder.
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>2.04</p>
+									</td>
+									<td>
+										<p>2024-01-19</p>
+									</td>
+									<td>
+										<p>David Saber</p>
+									</td>
+									<td>
+										* Bug with channels window: channels list inframe not sized correctly: fixed.<br />
+										* New shelf icon.<br />
+										* Code Tydings.<br />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p>2.05</p>
+									</td>
+									<td>
+										<p>2024-02-20</p>
+									</td>
+									<td>
+										<p>David Saber</p>
+									</td>
+									<td>
+										* Convert the script from MEL to Python 3: DONE! In its current shape (v2.05), the Python script does the same job as its MEL counterpart, but the code inside is still a mess, lots of lines and functions need to be re-written.<br />
+										* Feature Request on Highend3D at 2023-04-01 "Weighted Tangents" Submitted by:	Keith Sizemore: "It would be great if the script recognized weighted tangents. Me and other professionals I know use weighted. If you could add that, that would be amazing." Well it was already implemented but was bugged. Now fixed.<br />
+										* Bug: if nothing selected and write anim: code breaks. This bug wasn't there on the Mel file but it's fixed anyway.<br />
+										* Deselect graph editor keys before rzading animation, preventing a Maya error<br />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
