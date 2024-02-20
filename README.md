@@ -1,3 +1,4 @@
 # dkAnimEhEh
-This tool is used in Maya to export and import animation data.
-There's an HTML file inside the ZIP file that explains everything : Description, Installation, Uninstallation, General Usage, Instructions, Commands, Screenshots, Additional Information, Todo, Contact and Version History. Read this file first!
+This tool is used in Maya to export and import animation data.<br />
+There's an HTML file inside the ZIP file that explains everything : Description, Installation, Uninstallation, General Usage, Instructions, Commands, Screenshots, Additional Information, Todo, Contact and Version History. Read this file first!<br />
+The script is now available on GitHub, so other people can update the code. Highend3d was a great site that was full of ressources for 3D artists. Even if the look and system of the website were dated, it was still the place to go when looking for a good Maya script. But now, in February 2024, it has been offline for about 4 months. So I need to share the script somewhere else and I chose GitHub because, which allows other developers to easily add some code and to fix bugs.
